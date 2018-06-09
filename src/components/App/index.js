@@ -7,10 +7,15 @@ import './app.styl';
 
 class App extends React.Component {
   state = {
+    view: 'home',
     firstName: '',
     lastName: '',
     email: '',
     password: '',
+  }
+
+  changeView = view => () => {
+    this.setState({ view });
   }
 
   changeInput = (evt) => {
@@ -23,24 +28,28 @@ class App extends React.Component {
     });
   }
   render() {
-    // const {
-    //   firstName,
-    //   lastName,
-    //   email,
-    //   password,
-    // } = this.state;
+    const {
+      view,
+    } = this.state;
     return (
       <div className="page">
-        <Home />
-        <div className="app">
-          <Signup
-            onChangeInput={this.changeInput}
-            firstName={this.state.firstName}
-            lastName={this.state.lastName}
-            email={this.state.email}
-            password={this.state.password}
-            // onSubmit={this.onSubmitSignup}
+        { view === 'home' &&
+          <Home
+            onChangeView={this.changeView}
           />
+        }
+        <div className="app">
+          { view === 'signup' &&
+            <Signup
+              onChangeInput={this.changeInput}
+              firstName={this.state.firstName}
+              lastName={this.state.lastName}
+              email={this.state.email}
+              password={this.state.password}
+              onChangeView={this.changeView}
+              // onSubmit={this.onSubmitSignup}
+            />
+          }
         </div>
       </div>
     );

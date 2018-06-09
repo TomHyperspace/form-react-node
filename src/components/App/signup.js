@@ -10,6 +10,7 @@ const Signup = ({
   lastName,
   email,
   password,
+  onChangeView,
   onSubmit,
 }) => (
 
@@ -48,17 +49,24 @@ const Signup = ({
     <button className="form-signup form-signup--login">
       Se connecter
     </button>
+    <a
+        className="app-link"
+        onClick={onChangeView('home')}
+      >
+        Retour Home
+      </a>
   </form>
 
 </div>
 );
 
 Signup.propTypes = {
-  onChangeInput: PropTypes.func.isRequired,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
+  onChangeInput: PropTypes.func.isRequired,
+  onChangeView: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
