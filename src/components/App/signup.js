@@ -10,13 +10,15 @@ const Signup = ({
   lastName,
   email,
   password,
+  onSubmit,
 }) => (
 
 <div className="app-signup">
-  <h1 className="app-title">Sign Up </h1>
+  <h2 className="app-title">Sign Up </h2>
   <p className="app-desc">Veuillez remplir tous les champs afin de créer votre compte utilisateur.</p>
   <form
     className="form"
+    onSubmit={onSubmit}
   >
     <Field
       name="firstName"
@@ -57,6 +59,7 @@ Signup.propTypes = {
   lastName: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default Signup;
